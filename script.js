@@ -337,7 +337,7 @@ class BirthdayApp {
     if (this.hasTriggeredBirthday) return;
     const now = new Date();
     const isBirthday = now.getFullYear() === 2025 &&
-      now.getMonth() === 7 &&
+      now.getMonth() === 5 &&
       now.getDate() === 13;
     
     if (isBirthday) this.handleBirthdayStart();
