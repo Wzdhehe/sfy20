@@ -1,0 +1,426 @@
+/* ========== 基础样式 ========== */
+:root {
+  --primary: #f8c8dc;
+  --secondary: #0a0e29;
+  --accent: #ff69b4;
+  --text-glow: 0 0 15px rgba(248, 200, 220, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background: var(--secondary);
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ========== 星空背景 ========== */
+.starry-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0e29;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.starry-bg::before {
+  content: '';
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: 
+    radial-gradient(1px 1px at 10% 20%, #fff 10%, transparent 30%),
+    radial-gradient(1px 1px at 90% 70%, #fff 10%, transparent 30%),
+    radial-gradient(1px 1px at 30% 80%, #fff 10%, transparent 30%),
+    radial-gradient(1px 1px at 60% 40%, #fff 10%, transparent 30%),
+    radial-gradient(2px 2px at 50% 30%, #fff 30%, transparent 50%),
+    radial-gradient(2px 2px at 80% 90%, #fff 30%, transparent 50%);
+  background-size: 100px 100px;
+  animation: stars-drift 200s linear infinite;
+}
+
+.starry-bg::after {
+  content: '';
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: 
+    radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.8) 10%, transparent 50%),
+    radial-gradient(2px 2px at 85% 75%, rgba(255,255,255,0.8) 10%, transparent 50%);
+  background-size: 150px 150px;
+  opacity: 0;
+  animation: 
+    stars-drift 180s linear infinite reverse,
+    stars-twinkle 3s ease-in-out infinite;
+}
+
+@keyframes stars-drift {
+  100% { transform: translate(-66.66%, -66.66%) rotate(0.05turn); }
+}
+
+@keyframes stars-twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ========== 主容器 ========== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== 标题样式 ========== */
+header {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.title {
+  font-size: 4rem;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: var(--text-glow);
+  animation: title-float 3s ease-in-out infinite;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  margin-top: 1rem;
+}
+
+@keyframes title-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ========== 倒计时模块 ========== */
+.countdown-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  position: relative;
+}
+
+.countdown-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(248, 200, 220, 0.2);
+  z-index: -1;
+}
+
+.countdown-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+#countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.time-block {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.time-block:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+#countdown span {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 300;
+  background: linear-gradient(180deg, #fff 20%, var(--primary) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.time-label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+/* ========== 音乐专辑模块 ========== */
+.music-gallery-section {
+  position: relative;
+  z-index: 1;
+}
+
+.music-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.music-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  overflow: visible;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.album-cover {
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+}
+
+.album-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.music-card:hover .album-image {
+  transform: scale(1.03);
+}
+
+.play-icon {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(0,0,0,0.7);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  transform: translateZ(0);
+}
+
+.play-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255,105,180,0.5);
+}
+
+.play-icon i {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-left: 2px;
+  transition: color 0.3s ease;
+}
+
+.music-card.playing {
+  box-shadow: 0 0 25px rgba(255,105,180,0.3);
+}
+
+.music-card.playing .play-icon {
+  background: var(--accent);
+}
+
+.music-card.playing .play-icon i {
+  color: white;
+}
+
+/* ========== 生日祝福区 ========== */
+.message-section {
+  margin: 4rem 0;
+  padding: 2rem;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  line-height: 1.8;
+}
+
+.message p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.message p::before {
+  content: '🎉';
+  position: absolute;
+  left: -0.5rem;
+  top: -0.2rem;
+}
+
+/* ========== 背景音乐控制 ========== */
+.background-music-section {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgba(255,255,255,0.1);
+  padding: 0.8rem 1.2rem;
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  z-index: 999;
+}
+
+.control-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.control-btn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.1);
+}
+
+.control-btn i {
+  filter: drop-shadow(0 0 2px rgba(255,105,180,0.3));
+}
+
+/* ========== 纸屑特效 ========== */
+.confetti-container {
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  z-index: 998;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  border-radius: 50%;
+  animation: 
+    confetti-fall 3s ease-out forwards,
+    confetti-spin 2s linear infinite;
+}
+
+@keyframes confetti-fall {
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  #countdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .time-block {
+    padding: 1rem;
+  }
+
+  #countdown span {
+    font-size: 2rem;
+  }
+
+  .music-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .album-cover {
+    height: 200px;
+    padding: 10px;
+  }
+
+  .play-icon {
+    width: 36px;
+    height: 36px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .music-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .album-cover {
+    height: 220px;
+  }
+}
+
+/* 生日当天特效 */
+.birthday-active .title {
+  animation: 
+    title-float 3s ease infinite,
+    rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  100% { filter: hue-rotate(360deg); }
+}
+
+.birthday-active .message p::before {
+  animation: bounce 0.8s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

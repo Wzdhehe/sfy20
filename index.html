@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曹洋的21岁生日快乐！</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="starry-bg"></div>
+    
+    <!-- 纸屑容器 -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <h1 class="title">曹洋的21岁生日(阴历)</h1>
+            <div class="subtitle">2025.03.02</div>
+        </header>
+
+        <!-- 倒计时模块 -->
+        <section class="countdown-section">
+            <h2>距离生日还有</h2>
+            <div id="countdown">
+                <div class="time-block">
+                    <span id="days">00</span>
+                    <span class="time-label">天</span>
+                </div>
+                <div class="time-block">
+                    <span id="hours">00</span>
+                    <span class="time-label">时</span>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">00</span>
+                    <span class="time-label">分</span>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">00</span>
+                    <span class="time-label">秒</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 音乐专辑模块 -->
+        <section class="music-gallery-section">
+            <h2>精选歌单</h2>
+            <div class="music-gallery">
+                <!-- 专辑1 -->
+                <div class="music-card">
+                    <div class="album-cover">
+                        <img src="Preee.jpg" class="album-image" alt="Pretender">
+                        <div class="play-icon" data-audio="Preee.mp3">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="song-info">
+                        <h3>Pretender</h3>
+                        <p>Official髭男dism</p>
+                    </div>
+                </div>
+
+                <!-- 专辑2 -->
+                <div class="music-card">
+                    <div class="album-cover">
+                        <img src="Chen.jpg" class="album-image" alt="无人之境">
+                        <div class="play-icon" data-audio="Chen.mp3">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="song-info">
+                        <h3>无人之境</h3>
+                        <p>陈奕迅</p>
+                    </div>
+                </div>
+
+                <!-- 专辑3 -->
+                <div class="music-card">
+                    <div class="album-cover">
+                        <img src="1314.png" class="album-image" alt="1314 and a 520">
+                        <div class="play-icon" data-audio="1314.mp3">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="song-info">
+                        <h3>1314 and a 520</h3>
+                        <p>Philton Solomona</p>
+                    </div>
+                </div>
+
+                <!-- 专辑4 -->
+                <div class="music-card">
+                    <div class="album-cover">
+                        <img src="hou.jpg" class="album-image" alt="醉后喜欢我">
+                        <div class="play-icon" data-audio="hou.mp3">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="song-info">
+                        <h3>醉后喜欢我</h3>
+                        <p>icyball-冰球乐团</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 祝福语模块 -->
+        <section class="message-section">
+            <h2>生日祝福</h2>
+            <div class="message">
+                <p>亲爱的曹洋：</p>
+                <p>在你21岁生日来临之际，送上我最真挚的祝福！</p>
+                <p>愿你能继续充满力量与魅力，</p>
+                <p>在新的学期里，继续追逐梦想，绽放光彩！</p>
+                <p>生日快乐！</p>
+            </div>
+        </section>
+
+        <!-- 背景音乐控制 -->
+        <section class="background-music-section">
+            <div class="background-player">
+                <div class="music-info">
+                    <span class="song-title">JVKE - next to you</span>
+                </div>
+                <audio id="bgMusic" autoplay loop>
+                    <source src="next.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频元素。
+                </audio>
+                <div class="music-controls">
+                    <button id="bgMusicToggle" class="control-btn">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>Made with ❤️ for 曹洋's 21th Birthday</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
