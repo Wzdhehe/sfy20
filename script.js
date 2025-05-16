@@ -15,7 +15,7 @@ class BirthdayApp {
 
   /* ========== 倒计时模块 ========== */
   setupCountdown() {
-    this.targetDate = new Date('2025-03-02T00:00:00+08:00');
+    this.targetDate = new Date('2025-06-13T00:00:00+08:00');
     this.timeElements = {
       days: document.getElementById('days'),
       hours: document.getElementById('hours'),
@@ -337,7 +337,7 @@ class BirthdayApp {
     if (this.hasTriggeredBirthday) return;
     const now = new Date();
     const isBirthday = now.getFullYear() === 2025 &&
-      now.getMonth() === 7 &&
+      now.getMonth() === 5 &&
       now.getDate() === 13;
     
     if (isBirthday) this.handleBirthdayStart();
